@@ -1,6 +1,6 @@
 # IMDB_Clone_System
 ### Project Topic and Group Members
-We will develop an IMDB Clone system with functionalities, such as movie recommendation, movie ratings, movie genre searching, movie comments and criticization. And our team members are: Shihuan Wang, Tao Zhang, Zihan Guo and Yuxuan Wang. <br />
+We will develop an IMDB Clone system with functionalities, such as movie recommendation, movie ratings, movie genre searching, movie comments and criticization. Our team members are: Shihuan Wang, Tao Zhang, Zihan Guo and Yuxuan Wang. <br />
 
 ### Project Abstract
 1. We plan to develop an IMDB clone system for movies with several functionalities, movie recommendation, movie ratings, movie genre searching, and movie comments and criticization. <br />
