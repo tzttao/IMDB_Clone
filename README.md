@@ -8,5 +8,5 @@ We will develop an IMDB Clone system with functionalities, such as movie recomme
 3. The front-end of our web app would be developed on Vue.js frame. And in our first milestone, we would show a web page with the main page of the IMDB clone system and build up the connection between the front-end and the back-end. <br />
 4. The back-end of our web app would be developed on GoLang platform to build up our users' personal information module when they sign in their account in our first milestone.
 
-ttt
+00ttt
 
