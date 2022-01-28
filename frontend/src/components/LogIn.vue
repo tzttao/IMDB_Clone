@@ -26,13 +26,14 @@
 import Main from '../App'
 
 export default {
-  name: "Login",
-  data(){
-    return{
-      email: '', password: ''
+  name: 'Login',
+  data () {
+    return {
+      email: '',
+      password: ''
     }
   },
-  created() {
+  created () {
   },
   methods: {
     login () {
@@ -71,7 +72,6 @@ export default {
   }
 }
 </script>
-
 
 <style scoped>
 demo-input-suffix {
