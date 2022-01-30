@@ -8,10 +8,12 @@ import VueAxios from 'vue-axios'
 import ElementUI from 'element-ui'
 import locale from 'element-ui/lib/locale/lang/en'
 import 'element-ui/lib/theme-chalk/index.css'
-// import ECharts from 'vue-echarts'
+//import ECharts from 'vue-echarts'
+//Vue.prototype.$echarts = echarts
 import 'echarts/lib/component/tooltip'
 import 'echarts/lib/component/title'
 import 'echarts/lib/component/legend'
+
 
 Vue.prototype.$ajax = axios
 Vue.prototype.$axios = axios

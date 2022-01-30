@@ -1,6 +1,6 @@
 <template>
   <el-container>
-    <el-header>Welcome to Weather Recording System</el-header>
+    <el-header>Welcome to Internet Movie Database</el-header>
     <el-main style="margin-top: 100px">
       <div class="demo-input-suffix" style="margin-bottom: 15px; padding-right: 42%; height: 50px">
         <div style="float: right">
