@@ -25,17 +25,17 @@ PRIMARY KEY(cast_id)
 );
 
 
-CREATE TABLE type_list(
-type_id int not null,
-type varchar(50),
-PRIMARY KEY(type_id)
+CREATE TABLE genre_list(
+genre_id int not null,
+genre varchar(50),
+PRIMARY KEY(genre_id)
 );
 
-CREATE TABLE movie_type(
+CREATE TABLE movie_genre(
 movie_id int,
-type_id int,
+genre_id int,
 foreign key(movie_id) references movie(movie_id) on delete cascade on update cascade,
-foreign key(type_id) references type_list(type_id) on delete cascade on update cascade
+foreign key(genre_id) references genre_list(genre_id) on delete cascade on update cascade
 );
 
 
