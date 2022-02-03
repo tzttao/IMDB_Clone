@@ -1,15 +1,15 @@
 CREATE TABLE user(
-user_id int not null,
+user_id int not null auto_increment,
 username varchar(50),
 password varchar(50),
-user_type varchar(50),
-gender varchar(50),
+user_type int,
+gender int,
 birthday date,
 PRIMARY KEY(user_id)
 );
 
 CREATE TABLE movie(
-movie_id int not null,
+movie_id int not null auto_increment,
 movie_name varchar(50),
 year int,
 rate float,
@@ -18,7 +18,7 @@ PRIMARY KEY(movie_id)
 );
 
 CREATE TABLE cast_list(
-cast_id int not null,
+cast_id int not null auto_increment,
 cast_name varchar(50),
 cast_desciption varchar(50),
 PRIMARY KEY(cast_id)
@@ -26,7 +26,7 @@ PRIMARY KEY(cast_id)
 
 
 CREATE TABLE genre_list(
-genre_id int not null,
+genre_id int not null auto_increment,
 genre varchar(50),
 PRIMARY KEY(genre_id)
 );
@@ -55,11 +55,14 @@ foreign key(movie_id) references movie(movie_id) on delete cascade on update cas
 );
 
 CREATE TABLE comment(
-comment_id int,
+comment_id int not null auto_increment,
 user_id int,
 movie_id int,
 one_rate float,
 comment_description varchar(50),
+PRIMARY KEY(comment_id),
 foreign key(user_id) references user(user_id) on delete cascade on update cascade,
 foreign key(movie_id) references movie(movie_id) on delete cascade on update cascade
 );
+
+
