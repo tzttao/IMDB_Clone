@@ -47,7 +47,7 @@ func main() {
 	//Database.RawQueryField()
 	//Database.RawQueryAllField()
 	//Service.GetOne()
-	Service.DeleteOne()
-	//Service.UpdateOne()
+	//Service.AddUser()
+	Service.GetOne()
 	defer Database.Db.Close()
 }
