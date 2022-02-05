@@ -2,7 +2,7 @@ package main
 
 import (
 	Database "backend/Database"
-	Service "backend/Services"
+	"backend/Router"
 )
 
 func main() {
@@ -48,6 +48,7 @@ func main() {
 	//Database.RawQueryAllField()
 	//Service.GetOne()
 	//Service.AddUser()
-	Service.GetOne()
+	//Service.UpdateUser()
+	Router.Main()
 	defer Database.Db.Close()
 }
