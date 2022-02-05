@@ -8,7 +8,6 @@ import (
 	"strings"
 )
 
-//dddddddd
 //var MysqlDb *sql.DB
 //var MysqlDbErr error
 //
@@ -68,7 +67,7 @@ func init() {
 func GetDataBase() *gorm.DB {
 	// 给表名添加前缀
 	gorm.DefaultTableNameHandler = func(db *gorm.DB, defaultTableName string) string {
-		return "tp_" + defaultTableName
+		return defaultTableName
 	}
 
 	// 构建连接："用户名:密码@tcp(IP:端口)/数据库?charset=utf8"

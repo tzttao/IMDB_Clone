@@ -1,84 +1,101 @@
 <template>
-  <el-container>
-    <el-header>Welcome to Internet Movie Database</el-header>
-    <el-main style="margin-top: 100px">
-      <div class="demo-input-suffix" style="margin-bottom: 15px; padding-right: 42%; height: 50px">
-        <div style="float: right">
-          <span style="margin-right: 30px">email：</span>
-          <el-input clearable v-model="email" style="width: 220px; float: right"></el-input>
-        </div>
+  <div class="vue-tempalte">
+    <form>
+      <h3>Sign In</h3>
+
+      <div class="form-group" name="">
+        <label>Email address</label>
+        <input type="text" class="form-control form-control-lg" name="username"/>
       </div>
-      <div class="demo-input-suffix" style="margin-bottom: 30px; padding-right: 42%; height: 50px">
-        <div style="float: right">
-          <span style="margin-right: 30px">password：</span>
-          <el-input v-model="password" show-password clearable style="width: 220px; float: right"></el-input>
-        </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" class="form-control form-control-lg"name="password"/>
       </div>
-      <div style="display: inline-block">
-        <el-button style="width: 100px; margin-right: 30px" v-on:click="signUp">Sign Up</el-button>
-        <el-button style="width: 100px;" v-on:click="login">Login</el-button>
+
+      <button type="submit" class="btn btn-dark btn-lg btn-block">Sign In</button>
+
+      <p class="forgot-password text-right mt-2 mb-4">
+        <router-link to="/forgot-password">Forgot password ?</router-link>
+      </p>
+
+      <div class="social-icons">
+        <ul>
+          <li><a href="#"><i class="fa fa-google"></i></a></li>
+          <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+        </ul>
       </div>
-    </el-main>
-  </el-container>
+
+    </form>
+  </div>
 </template>
 
 <script>
-import Main from '../App'
-
 export default {
-  name: 'Login',
-  data () {
+  data() {
     return {
-      email: '',
-      password: ''
+      // loginForm: {
+      //   username: ,
+      //   password: this.password,
+      // },
     }
-  },
-  created () {
   },
   methods: {
-    login () {
-      if (this.email.length === 0 || this.password.length === 0) {
-        this.$alert('Please enter your email or password!', 'Alert', {
-          confirmButtonText: 'OK',
-          callback: action => {
-            // this.$message({
-            //   type: 'info',
-            //   message: `action: ${action}`
-            // })
-          }
-        })
-      } else {
-        this.$ajax.post('/api/login/' + this.email + '/' + this.password).then(res1 => {
-          if (res1.data === 'success') {
-            this.$ajax.post('/api/getUserInfo/' + this.email).then(res2 => {
-              Main.email = res2.data.email
-              Main.usertype = res2.data.usertype
-              console.log(Main.email)
-              if (Main.usertype === 'M') {
-                this.$router.push('/admin')
-              } else if (Main.usertype === 'R') {
-                this.$router.push('/welcome')
-              }
-            })
-          } else {
-            this.$message.error('Sorry, your email or password is wrong!')
-          }
-        })
-      }
+    testAxios() {
+      // 由于 main.js 里全局定义的 axios,此处直接使用 $axios 即可。
+      // 由于 main.js 里定义了每个请求前缀，此处的 / 即为 /api/，
+      // 经过 vue.config.js 配置文件的代理设置，会自动转为 https://www.baidu.com/，从而解决跨域问题
+      this.$axios.get("v1/signin").then(response => {
+        if (response.data) {
+          console.log(response.data)
+        }
+      }).catch(err => {
+        alert('请求失败')
+      })
     },
-    signUp () {
-      this.$router.push('/signUp')
-    }
+    // Login(){
+    //   this.$axios.post("v1/signin",this.$qs.stringify(params))
+    //     .then(res => {
+    //       console.log(res);
+    //       if (res.data != 0) {
+    //         sessionStorage.setItem('user', this.loginForm.username);
+    //         this.sId=res.data;
+    //         sessionStorage.setItem('sId',this.sId);
+    //         if(this.$route.query.rediret){//如果存在参数
+    //           let redirect=this.$route.query.redirect
+    //           this.$router.push(redirect)//则跳转至进入登录页前的路由
+    //         }else{
+    //           this.$router.push('/StudentContainer');//否则跳转至首页
+    //         }
+    //         this.$message({
+    //           title: '登录提示',
+    //           message: '登录成功',
+    //           showClose: true,
+    //           center: true,
+    //           type: 'success'
+    //         });
+    //       } else {
+    //         this.$message({
+    //           title: '登录提示',
+    //           message: '用户名或密码错误',
+    //           center: true,
+    //           type: 'error'
+    //         });
+    //         this.loading = false;
+    //       }
+    //     }).catch(error => {
+    //     this.loading = false;
+    //     console.log(error);
+    //     this.$message({//这里采用element ui的一个错误显示效果模板
+    //       title: '登录提示',
+    //       message: error.message,
+    //       center: true,
+    //       type: 'warning'
+    //     });
+    //   })
+    // }, 1000);
+    // }
   }
 }
 </script>
-
-<style scoped>
-demo-input-suffix {
-  display: inline-block;
-}
-
-el-input {
-  width: 200px;
-}
-</style>
