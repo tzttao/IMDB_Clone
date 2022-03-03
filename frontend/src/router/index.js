@@ -1,80 +1,40 @@
-// import Vue from 'vue'
-// import Router from 'vue-router'
-// import HelloWorld from '@/components/HelloWorld'
-//
-// Vue.use(Router)
-//
-// // export default new Router({
-// //   routes: [
-// //
-// //   ]
-// // })
-//
-//
-//
-//
-// const routes = [
-//   {
-//     path: '/',
-//     name: 'HelloWorld',
-//     component: HelloWorld
-//   },
-//   // {
-//   //   path: '/',
-//   //   name: 'signup',
-//   //   component: () => import('../components/Signup.vue')
-//   // },
-//   {
-//     path: '/login',
-//     name: 'login',
-//     component: () => import('../components/Login.vue')
-//   },
-//   {
-//     path: '/forgot-password',
-//     name: 'forgot-password',
-//     component: () => import('../components/ForgotPassword.vue')
-//   }
-// ]
-//
-// const router = new VueRouter({
-//   mode: 'history',
-//   base: process.env.BASE_URL,
-//   routes
-// })
-//
-// export default router
 import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Router from 'vue-router'
+Vue.use(Router)
 
-Vue.use(VueRouter)
+const router = new Router({
+  routes: [
+    {
+      path: '/UserLogIn',
+      component: () => import('../views/user/UserLogIn.vue')
+    },
+    {
+      path: '/UserSignup',
+      component: () => import('../views/user/UserSignUp.vue')
+    },
+    {
+      path: '/signup',
+      component: () => import('../components/UserContainer.vue')
+    },
+    {
+      path: '/hello',
+      component: () => import('../views/HelloWorld.vue')
+    },
+  ]
+});
 
-const routes = [
-  //   {
-  //   path: '/',
-  //   name: 'HelloWorld',
-  //     component: () => import('../components/HelloWorld.vue')
-  // },
-  {
-    path: '/',
-    name: 'signup',
-    component: () => import('../components/Signup.vue')
-  },
-  {
-    path: '/login',
-    name: 'login',
-    component: () => import('../components/Login.vue')
-  },
-  {
-    path: '/forgot-password',
-    name: 'forgot-password',
-    component: () => import('../components/ForgotPassword.vue')
+// 导航守卫
+// 使用 router.beforeEach 注册一个全局前置守卫，判断用户是否登陆
+router.beforeEach(async (to, from, next) => {
+  if (to.path === '/UserLogIn') {
+    next();
+  } else {
+    let token = localStorage.getItem('token');
+    if (token === null || token === '') {
+      next('/UserLogIn');
+    } else {
+      next();
+    }
   }
-]
-
-const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
-})
-
-export default router
+});
+export default router;
